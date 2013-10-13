@@ -1,11 +1,28 @@
 var http = require('http'), fs = require('fs'), url = require('url'), cs =require('child_process');
-var exec = cs.exec, spawn = require('child_process').spawn;
+
 var port = process.env.PORT || 3000;
 
 http.createServer(function(req, res) {
 var abc = url.parse(req.url, true), path = abc.pathname;
 
 
+fs.readFile('./index.html', function(err, html) {
+  	if (err) { throw err; }
+  	res.writeHead(200, {"Content-Type": "text/html"});
+  	res.write(html);
+	res.end();
+});
+
+}).listen(port);
+console.log(port);
+	
+
+	// ls.stdin.write('git remote add origin https://github.com/techsin/cargames.git');
+    
+	// ls.stdin.write('git pull');
+
+	
+/*var exec = cs.exec, spawn = require('child_process').spawn;
 if (path=='/90183692268807934844204653499881516397615934124226775735065875857624799287860312769887154161311253979823223859244357789554574701001496584526468171041383/gitit'){
 var ls    = spawn('bash');
 
@@ -34,19 +51,4 @@ ls.on('close', function (code) {
 	res.write('updated');
  	res.end();
 	return;
-}
-
-fs.readFile('./index.html', function(err, html) {
-  	if (err) { throw err; }
-  	res.writeHead(200, {"Content-Type": "text/html"});
-  	res.write(html);
-	res.end();
-});
-
-}).listen(port);
-console.log(port);
-	
-
-	// ls.stdin.write('git remote add origin https://github.com/techsin/cargames.git');
-    
-	// ls.stdin.write('git pull');
+}*/
