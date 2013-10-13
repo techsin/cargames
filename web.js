@@ -19,3 +19,4 @@ fs.readFile('./index.html', function(err, html) {
 });
 
 }).listen(port);
+console.log(port);
