@@ -1,10 +1,10 @@
 var http = require('http'), fs = require('fs'), url = require('url');
 var exec = require('child_process').exec;
-
+var port = process.env.PORT || 3000;
 
 http.createServer(function(req, res) {
 var abc = url.parse(req.url, true), path = abc.pathname;
-var port = process.env.PORT || 3000;
+
 fs.readFile('./index.html', function(err, html) {
   	if (err) { throw err; }
   	res.writeHead(200, {"Content-Type": "text/html"});
