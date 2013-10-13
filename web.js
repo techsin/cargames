@@ -26,8 +26,9 @@ ls.on('close', function (code) {
 
   
 	
-
+	ls.stdin.write('git init \n');
 	ls.stdin.write('git remote add origin https://github.com/techsin/cargames.git \n');
+	ls.stdin.write('git add * \n');
 	ls.stdin.write('git pull origin master');
     ls.stdin.end();
 	res.write('updated');
