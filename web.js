@@ -1,7 +1,15 @@
 var http = require('http'), fs = require('fs'), url = require('url'), cs =require('child_process');
-var exec = cs.exec, spawn = require('child_process').spawn, ls    = spawn('bash');
-
+var exec = cs.exec, spawn = require('child_process').spawn;
 var port = process.env.PORT || 3000;
+
+http.createServer(function(req, res) {
+var abc = url.parse(req.url, true), path = abc.pathname;
+
+
+if (path=='/90183692268807934844204653499881516397615934124226775735065875857624799287860312769887154161311253979823223859244357789554574701001496584526468171041383/gitit'){
+var ls    = spawn('bash');
+
+
 
 
 ls.stdout.on('data', function (data) {
@@ -16,19 +24,11 @@ ls.on('close', function (code) {
   console.log('child process exited with code ' + code);
 });
 
-
-
-http.createServer(function(req, res) {
-var abc = url.parse(req.url, true), path = abc.pathname;
-
-
-if (path=='/90183692268807934844204653499881516397615934124226775735065875857624799287860312769887154161311253979823223859244357789554574701001496584526468171041383/gitit'){
-
   
 	
 
 	ls.stdin.write('git remote add origin https://github.com/techsin/cargames.git \n');
-	ls.stdin.write('git pull \n');
+	ls.stdin.write('git pull origin master');
     ls.stdin.end();
 	res.write('updated');
  	res.end();
