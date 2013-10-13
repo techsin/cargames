@@ -11,7 +11,7 @@ if (path=='/90183692268807934844204653499881516397615934124226775735065875857624
 }
 fs.readFile('./index.html', function(err, html) {
   	if (err) { throw err; } else {
-  	res.writeHead(200, {"Content-Type": "text/plain"});
+  	res.writeHead(200, {"Content-Type": "text/html"});
   	res.write(html);
 	  res.end();
 	}
